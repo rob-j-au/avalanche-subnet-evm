@@ -17,9 +17,13 @@ RUN apk add --no-cache \
 ENV GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
+# Set default subnet-evm version (can be overridden at build time)
+ARG SUBNET_EVM_VERSION=v0.6.8
+
 # Clone and build subnet-evm plugin
 RUN git clone https://github.com/ava-labs/subnet-evm.git /tmp/subnet-evm && \
     cd /tmp/subnet-evm && \
+    git checkout ${SUBNET_EVM_VERSION} && \
     go mod download && \
     ./scripts/build.sh
 
