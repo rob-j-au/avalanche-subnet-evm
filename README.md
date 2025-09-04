@@ -3,7 +3,7 @@
 Build with default version (v0.6.8)
 
 ```
-docker build -t avalanche-subnet-evm .
+ARCH=amd64 docker build -t avalanche-subnet-evm .
 ```
 
 Build with specific version (e.g. v0.6.7)
